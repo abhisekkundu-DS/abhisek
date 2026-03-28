@@ -642,6 +642,243 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* Chatbot Widget Styles */
+    .chatbot-widget {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      z-index: 100;
+    }
+
+    .chat-toggle {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+      transition: all 0.3s ease;
+      animation: chatPulse 2s infinite;
+    }
+
+    @keyframes chatPulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4); }
+      50% { transform: scale(1.05); box-shadow: 0 12px 30px rgba(59, 130, 246, 0.6); }
+    }
+
+    .chat-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    .chat-toggle i {
+      font-size: 1.8rem;
+      color: white;
+    }
+
+    .chat-container {
+      position: fixed;
+      bottom: 100px;
+      left: 30px;
+      width: 380px;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      overflow: hidden;
+      display: none;
+      flex-direction: column;
+      animation: slideUp 0.3s ease;
+      border: 1px solid #e2e8f0;
+    }
+
+    .chat-container.open {
+      display: flex;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .chat-header {
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      padding: 1rem 1.2rem;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-header h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .chat-header i {
+      font-size: 1.2rem;
+    }
+
+    .close-chat {
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: opacity 0.2s;
+    }
+
+    .close-chat:hover {
+      opacity: 0.7;
+    }
+
+    .chat-messages {
+      height: 300px;
+      overflow-y: auto;
+      padding: 1rem;
+      background: #f9fafb;
+    }
+
+    .message {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .bot-message {
+      justify-content: flex-start;
+    }
+
+    .user-message {
+      justify-content: flex-end;
+    }
+
+    .message-bubble {
+      max-width: 80%;
+      padding: 0.7rem 1rem;
+      border-radius: 18px;
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+
+    .bot-message .message-bubble {
+      background: #eef2ff;
+      color: #1e293b;
+      border-bottom-left-radius: 4px;
+    }
+
+    .user-message .message-bubble {
+      background: #3b82f6;
+      color: white;
+      border-bottom-right-radius: 4px;
+    }
+
+    .message-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: white;
+    }
+
+    .suggested-questions {
+      padding: 0.8rem 1rem;
+      background: #f1f5f9;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .suggest-btn {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 40px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #3b82f6;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .suggest-btn:hover {
+      background: #3b82f6;
+      color: white;
+      border-color: #3b82f6;
+      transform: translateY(-2px);
+    }
+
+    .chat-input-area {
+      padding: 1rem;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      gap: 0.5rem;
+      background: white;
+    }
+
+    .chat-input {
+      flex: 1;
+      padding: 0.7rem 1rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 40px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .chat-input:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 2px rgba(59,130,246,0.1);
+    }
+
+    .chat-send {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chat-send:hover {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 850px) {
+      .chat-container {
+        width: 320px;
+        left: 15px;
+        bottom: 85px;
+      }
+      .chatbot-widget {
+        left: 15px;
+        bottom: 20px;
+      }
+      .suggested-questions {
+        flex-wrap: wrap;
+      }
+    }
   </style>
 </head>
 <body>
@@ -656,6 +893,45 @@
   <div class="shape" style="width: 260px; height: 260px; top: 75%; left: -5%; animation-duration: 25s;"></div>
   <div class="shape shape2" style="width: 150px; height: 150px; top: 20%; right: 15%; animation-duration: 16s;"></div>
   <div class="shape shape3" style="width: 200px; height: 200px; bottom: 40%; left: 20%; animation-duration: 21s;"></div>
+</div>
+
+<!-- Chatbot Widget -->
+<div class="chatbot-widget">
+  <div class="chat-toggle" id="chatToggle">
+    <i class="fas fa-comment-dots"></i>
+  </div>
+  <div class="chat-container" id="chatContainer">
+    <div class="chat-header">
+      <h4><i class="fas fa-robot"></i> Portfolio Assistant</h4>
+      <i class="fas fa-times close-chat" id="closeChat"></i>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="message bot-message">
+        <div class="message-icon">
+          <i class="fas fa-robot"></i>
+        </div>
+        <div class="message-bubble">
+          Hi! I'm your AI assistant. Ask me anything about Abhisek's skills, projects, experience, education, or certifications! Click any suggestion below to get started.
+        </div>
+      </div>
+    </div>
+    <div class="suggested-questions" id="suggestedQuestions">
+      <button class="suggest-btn" data-question="What are his skills?">💻 Skills</button>
+      <button class="suggest-btn" data-question="Tell me about PyroSense">🔥 PyroSense</button>
+      <button class="suggest-btn" data-question="What is NeoRiskPredict?">❤️ NeoRiskPredict</button>
+      <button class="suggest-btn" data-question="What is his experience?">💼 Experience</button>
+      <button class="suggest-btn" data-question="What is his education?">🎓 Education</button>
+      <button class="suggest-btn" data-question="Contact information">📧 Contact</button>
+      <button class="suggest-btn" data-question="Show me all projects">📁 All Projects</button>
+      <button class="suggest-btn" data-question="What certifications does he have?">📜 Certifications</button>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" class="chat-input" id="chatInput" placeholder="Ask a question...">
+      <button class="chat-send" id="chatSend">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
 </div>
 
 <!-- MOVING QUOTE OBJECT -->
@@ -785,7 +1061,7 @@
     </div>
     <div class="exp-item">
       <div class="exp-title">
-        <span><i class="fas fa-microchip"></i> Computer Vision Intern @ Swatahi</span>
+        <span><i class="fas fa-microchip"></i> Computer Vision Intern @ swaith.ai</span>
         <span style="font-size:0.8rem; color:#475569;">July 2025 – Oct 2025 · Remote</span>
       </div>
       <ul class="exp-list">
@@ -1015,6 +1291,111 @@
   resizeCanvas();
   initParticles();
   animateNeurons();
+</script>
+
+<script>
+  const chatToggle = document.getElementById('chatToggle');
+  const chatContainer = document.getElementById('chatContainer');
+  const closeChat = document.getElementById('closeChat');
+  const chatInput = document.getElementById('chatInput');
+  const chatSend = document.getElementById('chatSend');
+  const chatMessages = document.getElementById('chatMessages');
+
+  function addMessage(text, isUser) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+    if (!isUser) {
+      const iconDiv = document.createElement('div');
+      iconDiv.className = 'message-icon';
+      iconDiv.innerHTML = '<i class="fas fa-robot"></i>';
+      messageDiv.appendChild(iconDiv);
+    }
+    const bubbleDiv = document.createElement('div');
+    bubbleDiv.className = 'message-bubble';
+    bubbleDiv.textContent = text;
+    messageDiv.appendChild(bubbleDiv);
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function getResponse(query) {
+    const q = query.toLowerCase();
+    if (q.includes('skill') || q.includes('tech') || q.includes('stack') || q.includes('programming')) {
+      return "Abhisek's technical skills include: Programming: Python, SQL, Java. ML/AI: PyTorch, TensorFlow, Scikit-learn, OpenCV, YOLO, CNNs, Computer Vision, NLP. Web: Django, Flask, HTML/CSS. Data Science: Pandas, NumPy, Matplotlib, Seaborn, Power BI, Tableau. Databases: PostgreSQL, MySQL, SQLite. Tools: Git, Docker, Jupyter, Linux, DevOps.";
+    }
+    if (q.includes('project') && (q.includes('all') || q.includes('list'))) {
+      return "Abhisek has 5 major projects: 1. PyroSense - Fire detection with YOLOv8 (92% accuracy). 2. NeoRiskPredict - Neonatal risk prediction (87% accuracy). 3. Siamese Face Verification - Identity verification with FastAPI. 4. Email Spam Classifier - 96% precision. 5. Airbnb Market Analysis - 48k+ listings analysis with Tableau.";
+    }
+    if (q.includes('pyro') || q.includes('fire')) {
+      return "PyroSense is a fire detection system using YOLOv8 achieving 92% accuracy on real-time video streams. It uses custom data augmentation and Flask API deployment, reducing false positives by 25%.";
+    }
+    if (q.includes('neo') || q.includes('neorisk') || q.includes('neonatal')) {
+      return "NeoRiskPredict is a hybrid LSTM+MLP deep learning model predicting neonatal health risks with 87% accuracy. It processes 10,000+ maternal and neonatal health records and uses SHAP values for interpretable outputs.";
+    }
+    if (q.includes('siamese') || q.includes('face')) {
+      return "The Siamese Face Verification system uses a Siamese neural network with contrastive loss for facial feature comparison. It's deployed with FastAPI for production-ready identity verification.";
+    }
+    if (q.includes('spam') || q.includes('email')) {
+      return "Email Spam Classifier achieves 96% precision using NLP techniques with TF-IDF feature extraction, comparing Naive Bayes, SVM, and Random Forest algorithms. Deployed via Flask REST API.";
+    }
+    if (q.includes('airbnb') || q.includes('market')) {
+      return "Airbnb Market Analysis processed 48,000+ NYC listings using statistical hypothesis testing to identify pricing patterns. Created interactive Tableau dashboards for data-driven business recommendations.";
+    }
+    if (q.includes('experience') || q.includes('intern') || q.includes('work')) {
+      return "Abhisek worked as a Computer Vision Intern at swaith.ai (July-Oct 2025). He developed image-based deep learning models improving accuracy by 15%, designed annotation pipelines for 10,000+ images, and optimized inference pipelines by 30% using CNN and transformer architectures.";
+    }
+    if (q.includes('education') || q.includes('study') || q.includes('degree') || q.includes('university')) {
+      return "Abhisek is currently pursuing MCA at MAKAUT with CGPA 8.3/10 (2024-Present). He completed his B.Sc in Mathematics from University of Kalyani with 8.49/10 grade (Graduated 2023).";
+    }
+    if (q.includes('certification') || q.includes('certificate')) {
+      return "Abhisek has completed: Full Stack Data Science AI Program from AlmaBetter (2024) and AIML in Crop Acreage Mapping from IIRS Outreach Program.";
+    }
+    if (q.includes('contact') || q.includes('email') || q.includes('github')) {
+      return "You can contact Abhisek via: GitHub: github.com/abhisekkundu-DS, Email: abhisekkundu86@gmail.com, and LinkedIn: linkedin.com/in/abhisek-kundu";
+    }
+    if (q.includes('hello') || q.includes('hi') || q.includes('hey')) {
+      return "Hello! I'm your portfolio assistant. Ask me about Abhisek's skills, projects, experience, education, certifications, or click the suggestion buttons above!";
+    }
+    return "I can help you learn about Abhisek's skills, projects (PyroSense, NeoRiskPredict, Siamese Face Verification, Email Spam Classifier, Airbnb Analysis), experience, education, certifications, or contact info. What would you like to know?";
+  }
+
+  function sendMessage(messageText) {
+    const message = messageText.trim();
+    if (!message) return;
+    addMessage(message, true);
+    setTimeout(() => {
+      const response = getResponse(message);
+      addMessage(response, false);
+    }, 300);
+  }
+
+  chatToggle.addEventListener('click', () => {
+    chatContainer.classList.toggle('open');
+  });
+
+  closeChat.addEventListener('click', () => {
+    chatContainer.classList.remove('open');
+  });
+
+  chatSend.addEventListener('click', () => {
+    sendMessage(chatInput.value);
+    chatInput.value = '';
+  });
+
+  chatInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      sendMessage(chatInput.value);
+      chatInput.value = '';
+    }
+  });
+
+  const suggestBtns = document.querySelectorAll('.suggest-btn');
+  suggestBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const question = btn.getAttribute('data-question');
+      sendMessage(question);
+    });
+  });
 </script>
 </body>
 </html>
